@@ -12,19 +12,25 @@ public class Main {
         while (lanjutTransaksi) {
             Integer noFaktur = ++lastFakturNumber;
             System.out.println();
-            System.out.println("No. Faktur: " + noFaktur);
+            System.out.println("No. Faktur\t: " + noFaktur);
 
-            System.out.print("Nama Pelanggan: ");
+            System.out.print("Nama Pelanggan\t: ");
             String namaPelanggan = scanner.next();
 
-            System.out.print("Nama Barang: ");
+            System.out.print("No HP\t\t: ");
+            String noHp = scanner.next();
+
+            System.out.print("Alamat\t\t: ");
+            String alamat = scanner.next();
+
+            System.out.print("Nama Barang\t: ");
             String namaBarang = scanner.next();
 
             boolean inputHargaValid = false;
             double hargaBarang = 0;
             while (!inputHargaValid) {
                 try {
-                    System.out.print("Harga Barang: ");
+                    System.out.print("Harga Barang\t: ");
                     hargaBarang = scanner.nextDouble();
                     inputHargaValid = true;
                 } catch (InputMismatchException e) {
@@ -37,7 +43,7 @@ public class Main {
             boolean inputJumlahValid = false;
             while (!inputJumlahValid) {
                 try {
-                    System.out.print("Jumlah Barang: ");
+                    System.out.print("Jumlah Barang\t: ");
                     jumlahBarang = scanner.nextInt();
                     if (jumlahBarang <= 0) {
                         throw new ArithmeticException("Jumlah barang harus lebih dari 0.");
@@ -51,7 +57,10 @@ public class Main {
                 }
             }
 
-            Transaksi transaksi = new Transaksi(noFaktur, namaPelanggan, namaBarang, hargaBarang, jumlahBarang);
+            System.out.print("Kasir\t\t: ");
+            String kasir = scanner.next();
+
+            Transaksi transaksi = new Transaksi(noFaktur, namaPelanggan, noHp, alamat, namaBarang, hargaBarang, jumlahBarang, kasir);
             System.out.println();
             transaksi.tampilkanDetailTransaksi();
 
